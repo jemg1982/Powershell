@@ -1,4 +1,4 @@
-﻿
+﻿Import-Module ActiveDirectory
 
 $computers = Get-Content C:\Temp\hotfix_computers.txt    
 $ErrorActionPreference = 'Stop'   
