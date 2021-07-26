@@ -1,0 +1,2 @@
+Register-PSRepository -Name "myNuGetSource" -SourceLocation "https://www.myget.org/F/powershellgetdemo/api/v2" -PublishLocation "https://www.myget.org/F/powershellgetdemo/api/v2/Packages" -InstallationPolicy Trusted
+Register-PSRepository -Name "PSGallery" -ScriptSourceLocation "https://www.powershellgallery.com/api/v2" -PublishLocation "https://www.powershellgallery.com/api/v2/Packages" -InstallationPolicy Trusted                                                                                        
