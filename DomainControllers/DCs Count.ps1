@@ -1,4 +1,4 @@
-Import-Module ActiveDirectory
+﻿Import-Module ActiveDirectory
 $domains = (Get-ADForest).Domains;
 
 foreach ($domain in $domains)
