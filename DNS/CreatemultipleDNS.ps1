@@ -26,9 +26,9 @@ Import-Csv c:\temp\dnsvc.csv | ForEach-Object {
  
 $Computer = "$($_.Computer).$domain" 
 $addr = $_.IP -split "\." 
-$rzone = "$($addr[2]).$($addr[1]).$($addr[0]).in-addr.arpa" 
+$reversezone = "$($addr[2]).$($addr[1]).$($addr[0]).in-addr.arpa" 
  
 dnscmd $Servername /recordadd $domain "$($_.Computer)" A "$($_.IP)" 
-dnscmd $Servername /zoneadd   $rzone /primary 
-dnscmd $Servername /recordadd $rzone "$($addr[3])" PTR $Computer 
+dnscmd $Servername /zoneadd   $reversezone /primary 
+dnscmd $Servername /recordadd $reversezone "$($addr[3])" PTR $Computer 
 }
