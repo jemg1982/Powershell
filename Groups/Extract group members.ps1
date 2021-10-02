@@ -19,12 +19,13 @@ Improvements:
 #>
 
 
-$DomainName = Get-ADDomain | Select-Object -ExpandProperty NetBiosname
+#$DomainName = Get-ADDomain | Select-Object -ExpandProperty NetBiosname
+$DomainName = "cna.com"
 $GroupName = "ca_devnix_RHEL_Quest"
 
 Get-ADGroup -Identity $GroupName
 
 Get-ADGroupMember -identity $GroupName -Recursive -Server $DomainName | 
-Get-Aduser -properties Name,DisplayName,samAccountName| 
-Select-Object Name,DisplayName,samAccountName | 
+Get-Aduser -properties Name,DisplayName,samAccountName, Enabled| 
+Select-Object Name,DisplayName,samAccountName, Enabled | 
 Export-CSV -Path C:\temp\$DomainName"-"$GroupName".csv" -NoTypeInformation -Encoding utf8 

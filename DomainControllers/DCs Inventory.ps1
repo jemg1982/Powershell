@@ -68,39 +68,3 @@ ForEach($DC in $AllDCs)
 # Display results in console 
 $DCTable | Sort-Object Site | Format-Table
  
-#Creating head style
-$Head = @"
-<style>
-  body {
-    font-family: "Arial";
-    font-size: 8pt;
-    }
-  th, td, tr { 
-    border: 1px solid #e57300;
-    border-collapse: collapse;
-    padding: 5px;
-    text-align: center;
-    }
-  th {
-    font-size: 1.2em;
-    text-align: left;
-    background-color: #003366;
-    color: #ffffff;
-    }
-  td {
-    color: #000000;
-     
-    }
-  .even { background-color: #ffffff; }
-  .odd { background-color: #bfbfbf; }
-  h6 { font-size: 12pt; 
-       font-color: black;
-       font-weight: bold;
-       }
- 
- text { font-size: 10pt;
-        font-color: black;
-        }
- }
-</style>
-"@
