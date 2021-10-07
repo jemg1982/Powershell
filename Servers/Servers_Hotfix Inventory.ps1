@@ -17,9 +17,6 @@ It can easily be modified to:
 1) Create a single file per server
 Export-CSV C:\temp\Hotfixes\Hotfix-Inventory-$computer.csv -NoTypeInformation -Encoding UTF8
 
-2) Instead of taking an input file, can get domain controllers from the domain itself.
-$computers=[system.directoryservices.activedirectory.domain]::GetCurrentDomain() | ForEach-Object {$_.DomainControllers} | ForEach-Object {$_.Name} 
-
 #>
 
 Import-Module ActiveDirectory
@@ -29,6 +26,14 @@ $ErrorActionPreference = 'Stop'
  
 ForEach ($computer in $computers) {   
   try   
-    {  Get-HotFix -cn $computer | 
-      Select-Object PSComputerName,HotFixID,Description,InstalledBy,InstalledOn | 
-      E
+    {  Get-HotFix -cn $computer | Select-Object PSComputerName,HotFixID,Description,InstalledBy,InstalledOn | export-CSV C:\temp\DC_Hotfix.csv -Append -NoTypeInformation -Encoding UTF8  }  
+  
+<#
+For a separate report per server
+
+{  Get-HotFix -cn $computer | Select-Object PSComputerName,HotFixID,Description,InstalledBy,InstalledOn | export-CSV C:\temp\DC_Hotfix-$computer.csv -NoTypeInformation -Encoding UTF8  }  
+   
+#>
+   catch    
+    {  Write-Warning "System Not reachable:$computer" }   
+}  
