@@ -1,4 +1,25 @@
 
+<#
+.SYNOPSIS 
+This script generates a report of all DFS target folders and paths. 
+
+.DESCRIPTION
+This script generates a report of all DFS target folders and paths
+
+.INPUTS
+The domain to be analyzed as part of the function paramters. 
+
+.OUTPUTS
+DFS targets, paths and counts report. 
+
+.NOTES
+
+.EXAMPLE
+
+Get-DfsnAllFolderTargets -Domain 'contoso.com'
+#>
+
+
 function Get-DfsnAllFolderTargets ($Domain)
 {
     $Time = Get-Date -Format yyyy-MM
@@ -29,8 +50,6 @@ Folder Targets = $FolderTargetsCount
     $FolderTargets | Export-CSV -path "C:\temp\$Time - $Domain - DFS Inventory - FolderTargets.csv" -NoTypeInformation
     $CountReport   | Out-file "C:\Temp\$Time - $Domain - DFS Inventory - Count.txt"
 }  
-
-Get-DfsnAllFolderTargets -Domain 'petrochemicals.int.huntsman.com'
 
 
 
