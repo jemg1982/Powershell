@@ -2,7 +2,7 @@ $StartTime = $(get-date)
 $Computers = get-content c:\temp\serverstoscan.txt
 $items = ($computers).count
 $i = 0
-$Domain = "hug.hardygroup.co.uk"
+$Domain = "contoso.com"
 
 $Cred = Get-Credential
 
